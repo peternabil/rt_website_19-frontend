@@ -1,0 +1,30 @@
+<div id="dark-overlay" *ngIf="sidenavStatus" (click)="toggle_sidenav()"></div>
+
+<aside [class.show]="sidenavStatus">
+  <!-- <header class="p-2 text-right" appSidenavToggler>
+    <i class="fas fa-times"></i> Close
+  </header> -->
+  <ng-content></ng-content>
+
+  <ul class="nav-main-list">
+    <li class="main-list-logo py-3 px-3">
+      <div class="logo w-100 py-5">
+        <img class="w-100" src="https://asuracingteam.org/assets/navbar/logo.png" alt="logo">
+      </div>
+    </li>
+    <li>
+      <ul class="nav-links">
+        <a class="p-3">
+          <span class="link-icon"><i class="fas fa-home"></i></span>
+          Home
+        </a>
+        <a class="p-3">
+          <span class="link-icon"><i class="far fa-user"></i></span>
+          Profile
+        </a>
+      </ul>
+    </li>
+  </ul>
+
+  <div class="sidenav-bg"></div>
+</aside>

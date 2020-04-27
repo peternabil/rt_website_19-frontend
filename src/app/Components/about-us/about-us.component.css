@@ -1,0 +1,75 @@
+  .header, .header p {
+    position: relative;
+}
+
+.header .container {
+    padding: 68px 15px 72px !important;
+}
+
+
+
+.background {
+   
+    background-size: cover;
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    width: 100%;
+    z-index: -10;
+    margin: 0px;
+    padding: 0px;
+    -webkit-filter: blur(2px);
+  
+}
+.header h1 {
+    margin-bottom: 40px;
+    line-height: 80px;
+    color: #fff;
+    font-weight: 100 !important;
+    text-align: center;
+    margin-right: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 55px;
+    margin-bottom: 20px;
+}
+
+
+
+.about-us-section h2 {
+    margin-top: 60px;
+    font-size: 30px;
+    font-family: 'Raleway';
+    text-align: center;
+}
+
+.red-border {
+    width: 50%;
+    border-bottom: 2px solid darkred;
+    margin: 0 auto;
+    height: 16px;
+}
+.description {
+    margin-top: 40px;
+    margin-right: 30px;
+    margin-left: 30px;
+    text-align:center;
+    font-family: 'Raleway';
+    color: darkred;
+    font-size:16px;
+    font-weight: 300;
+}
+.img{
+    
+    width: 700px;
+    background-size: cover;
+    padding-top: 50px;
+    padding-left: 10px;
+}
+.description span {
+     float: left;
+     padding-left: 80px;
+     padding-top: 10px;
+     font-size: 22px;
+}
+
+

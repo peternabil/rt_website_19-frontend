@@ -1,0 +1,127 @@
+<form [formGroup]="team_form" (ngSubmit)="onSubmit()">
+
+  <div class="row justify-content-center">
+    <div class="col-10">
+
+      <!-- Team -->
+      <div class="col-12">
+    
+        <div class="card">
+          <div class="card-header card-header-icon card-header-rose text-right">
+            <div class="card-icon">
+              <i class="material-icons">local_activity</i>
+            </div>
+            <a class="cursor-ptr text-danger" *ngIf="editmode.flag" (click)="delete_team()">Delete team</a>
+          </div>
+          <div class="card-body">
+            <div class="form-row">
+              <div class="form-group col-md-8">
+                <label>Team Name</label>
+                <input type="text" class="form-control" placeholder="Name" formControlName="team_name">
+              </div>
+              <div class="form-group col-md-4">
+                <label>Team Type</label>
+                <select class="form-control" formControlName="team_type">
+                  <option>Technical</option>
+                  <option>Management</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <!-- description -->
+              <label>Team Description</label>
+              <textarea class="form-control" placeholder="About The Team" formControlName="team_description"></textarea>
+            </div>
+          </div>
+        </div>
+    
+      </div>
+      <!-- Achievements -->
+      <div class="col-12">
+    
+        <div class="card">
+          <div class="card-header card-header-icon card-header-rose">
+            <div class="card-icon">
+              <i class="material-icons">card_membership</i>
+            </div>
+          </div>
+          <div class="card-body">
+  
+            <div formArrayName="achievements" *ngFor="let achievement of get_form_achievements.controls; let i = index">
+              <ng-container [formGroupName]="i">
+                <div class="text-right">
+                    <a class="cursor-ptr text-danger" (click)="delete_achievement(i,(editmode.flag)? achievement.value.id : null)">Delete Achievement</a>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-8">
+                    <label>Achievement Title</label>
+                    <input type="text" class="form-control" placeholder="Title" formControlName="title">
+                  </div>
+                  <div class="form-group col-md-4">
+                    <label>Position</label>
+                    <input type="text" class="form-control" placeholder="Position title" formControlName="position">
+                  </div>
+                </div>
+  
+                <div class="form-group">
+                  <label>Achievement Description</label>
+                  <textarea class="form-control" placeholder="Description" formControlName="description"></textarea>
+                </div>
+  
+                <div class="form-group">
+                  <label>Achievement Date</label>
+                  <input type="date" class="form-control" formControlName="year">
+                </div>
+  
+                <!-- if there id no image display add byn -->
+                <div class="form-group" *ngIf="achievement.value['image'] == null">
+                  <label for="{{ 'achievement-'+i+'-image' }}" class="btn btn-info"> <i class="material-icons">image</i> Select Image</label>
+                  <input type="file" id="{{ 'achievement-'+i+'-image' }}" style="display:none" (change)="achievement_image_change($event,i)">
+                </div>
+                
+                <!-- else display image -->
+                <div *ngIf="achievement.value['image'] != null" class="position-relative w-100">
+                  <img src="{{ endpoint + achievement.value.image}}" class="rounded w-75 mx-auto d-block">
+                  <button class="btn btn-sm btn-danger btn-fab btn-fab-mini btn-round mr-2 delete-image-btn position-absolute"
+                    (click)="delete_image('achievement',i)">
+                    <i class="material-icons">delete</i></button>
+                </div>
+  
+              </ng-container>
+              <hr *ngIf="i!=get_form_achievements.value.length-1">
+            </div>
+            
+            <div class="text-center my-3 cursor-ptr" (click)="add_form_achievement()">
+              <!-- Add new achievement -->
+              <a class="text-primary">Add one more achievement</a>
+            </div>
+  
+          </div>
+        </div>
+    
+      </div>
+
+        <div class="col-md-2 pl-3">
+          <label for="add_team_images" class="btn btn-info btn-round"><i class="material-icons">favorite</i>Add Team Images</label>
+          <input type="file" multiple style="display:none" id="add_team_images" (change)="team_images_change($event)">
+        </div>
+        <div class="col-md-10">
+          
+          <div class="m-2 d-inline-block position-relative" *ngFor="let image of get_form_images.value; let i=index">
+            <img src="{{endpoint + image.image}}" class="img-thumbnail" style="width:10em;" >
+              <button class="btn btn-sm btn-danger btn-fab btn-fab-mini btn-round mr-2 delete-image-btn position-absolute"
+              (click)="delete_image('team',i,image.id)">
+              <i class="material-icons">delete</i></button>
+          </div>
+        </div>
+
+      <div class="col-12 mt-5 text-center">
+        <button type="submit" class="btn btn-primary btn-block rounded">{{ editmode.flag ? 'Update' : 'Submit' }}</button>
+      </div>
+    </div>
+
+  </div>
+
+
+
+</form>

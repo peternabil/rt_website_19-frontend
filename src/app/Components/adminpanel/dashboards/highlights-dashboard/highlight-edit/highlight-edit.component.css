@@ -1,0 +1,8 @@
+.add-image-btn{
+    bottom: -0.8em;
+    right: 0.5em;
+}
+
+.image-cropper .source-image{ 
+    width: 100%;
+}

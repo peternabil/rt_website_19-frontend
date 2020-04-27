@@ -1,0 +1,66 @@
+<h5 class="card-title text-center">Sign In</h5>
+<form class="form-signin" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+  <div class="form-label-group">
+    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" formControlName="email"
+      autocomplete="off">
+    <label for="inputEmail">Email address</label>
+  </div>
+  <!-- displaying-errors -->
+  <div class="text-center" *ngIf="f.email.invalid && 
+                                    f.email.touched && 
+                                    f.email.errors != null">
+    <small class="form-text text-muted">
+      <p *ngIf="f.email.errors.required && 
+                    f.email.touched">
+        Email is Required
+      </p>
+
+      <p *ngIf="f.email.errors.pattern && 
+                    f.email.touched">
+        Please enter a valid email
+      </p>
+    </small>
+  </div> <!-- ./displaying-errors -->
+
+  <div class="form-label-group">
+    <input type="password" id="inputPassword" class="form-control" placeholder="Password" formControlName="password"
+      autocomplete="new-password">
+    <label for="inputPassword">Password</label>
+  </div>
+  <!-- displaying-errors -->
+  <div class="text-center" *ngIf="f.password.invalid && 
+                                      f.password.touched && 
+                                      f.password.errors != null">
+    <small class="form-text text-muted">
+      <p *ngIf="f.password.errors.required && 
+                      f.password.touched">
+        Password is Required
+      </p>
+
+      <p *ngIf="( f.password.errors.minlength || 
+                        f.password.errors.maxlength ) && 
+                        f.password.touched">
+        Your password must be 8-16 long
+      </p>
+    </small>
+  </div> <!-- ./displaying-errors -->
+
+  <div class="form-check">
+    <input type="checkbox" class="form-check-input" id="rememberme" formControlName="remember_me">
+    <label class="form-check-label" for="rememberme">Remember me</label>
+  </div>
+
+  <button class="btn btn-lg btn-dark btn-block text-uppercase" type="submit">Sign
+    In</button>
+
+  <a class="d-inline-block text-center mt-2 small" [routerLink]="['/auth/register']">Register</a>
+  <a class="d-inline-block float-right text-center mt-2 small" [routerLink]="['/auth/forget-password']">Forget your
+    password ?</a>
+
+  <hr class="my-4">
+  <button class="btn btn-lg btn-google btn-block text-uppercase" type="button" (click)="socialSignIn('google')"><i class="fab fa-google mr-2"></i>
+    Sign in with Google</button>
+  <button class="btn btn-lg btn-facebook btn-block text-uppercase" type="button" (click)="socialSignIn('facebook')"><i class="fab fa-facebook-f mr-2"></i>
+    Sign in with Facebook</button>
+</form>

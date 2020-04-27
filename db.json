@@ -1,0 +1,136 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "users": [
+    {
+      "id": 1,
+      "unm": "sean"
+    }
+  ],
+  "news": [
+    {
+      "id": 1,
+      "next_page_num": "1/null",
+      "num_pages": 2,
+      "articles": [
+        {
+          "id": 1,
+          "title": "name",
+          "description": "ovoef hjbdijsf;d vfm  sk dsf fdg gfdg gfhgfh fhfhjhgjh jghjhgj jhghgjmnsdnok ovoef hjbdijsf;d vfm  sk dsf fdg gfdg gfhgfh fhfhjhgjh jghjhgj jhghgjmnsdnokovoef hjbdijsf;d vfm  sk dsf fdg gfdg gfhgfh fhfhjhgjh jghjhgj jhghgjmnsdnokovoef hjbdijsf;d vfm  sk dsf fdg gfdg gfhgfh fhfhjhgjh jghjhgj jhghgjmnsdnokovoef hjbdijsf;d vfm  sk dsf fdg gfdg gfhgfh fhfhjhgjh jghjhgj jhghgjmnsdnokovoef hjbdijsf;d vfm  sk dsf fdg gfdg gfhgfh fhfhjhgjh jghjhgj jhghgjmnsdnokovoef hjbdijsf;d vfm  sk dsf fdg gfdg gfhgfh fhfhjhgjh jghjhgj jhghgjmnsdnokovoef hjbdijsf;d vfm  sk dsf fdg gfdg gfhgfh fhfhjhgjh jghjhgj jhghgjmnsdnokovoef hjbdijsf;d vfm  sk dsf fdg gfdg gfhgfh fhfhjhgjh jghjhgj jhghgjmnsdnokovoef hjbdijsf;d vfm  sk dsf fdg gfdg gfhgfh fhfhjhgjh jghjhgj jhghgjmnsdnokovoef hjbdijsf;d vfm  sk dsf fdg gfdg gfhgfh fhfhjhgjh jghjhgj jhghgjmnsdnokovoef hjbdijsf;d vfm  sk dsf fdg gfdg gfhgfh fhfhjhgjh jghjhgj jhghgjmnsdnokovoef hjbdijsf;d vfm  sk dsf fdg gfdg gfhgfh fhfhjhgjh jghjhgj jhghgjmnsdnokovoef hjbdijsf;d vfm  sk dsf fdg gfdg gfhgfh fhfhjhgjh jghjhgj jhghgjmnsdnokovoef hjbdijsf;d vfm  sk dsf fdg gfdg gfhgfh fhfhjhgjh jghjhgj jhghgjmnsdnokovoef hjbdijsf;d vfm  sk dsf fdg gfdg gfhgfh fhfhjhgjh jghjhgj jhghgjmnsdnokovoef hjbdijsf;d vfm  sk dsf fdg gfdg gfhgfh fhfhjhgjh jghjhgj jhghgjmnsdnokovoef hjbdijsf;d vfm  sk dsf fdg gfdg gfhgfh fhfhjhgjh jghjhgj jhghgjmnsdnokovoef hjbdijsf;d vfm  sk dsf fdg gfdg gfhgfh fhfhjhgjh jghjhgj jhghgjmnsdnokovoef hjbdijsf;d vfm  sk dsf fdg gfdg gfhgfh fhfhjhgjh jghjhgj jhghgjmnsdnokovoef hjbdijsf;d vfm  sk dsf fdg gfdg gfhgfh fhfhjhgjh jghjhgj jhghgjmnsdnokovoef hjbdijsf;d vfm  sk dsf fdg gfdg gfhgfh fhfhjhgjh jghjhgj jhghgjmnsdnokovoef hjbdijsf;d vfm  sk dsf fdg gfdg gfhgfh fhfhjhgjh jghjhgj jhghgjmnsdnokovoef hjbdijsf;d vfm  sk dsf fdg gfdg gfhgfh fhfhjhgjh jghjhgj jhghgjmnsdnokovoef hjbdijsf;d vfm  sk dsf fdg gfdg gfhgfh fhfhjhgjh jghjhgj jhghgjmnsdnok",
+          "image": null,
+          "video": "S_GVbuddri8",
+          "date": "12548/2515/2019",
+          "status": "true/false",
+          "article_type": "video/post"
+        },
+        {
+          "id": 1,
+          "title": "kgbrjkblj",
+          "description": "b la l fbsfvdv,ovoef hjbdijsf;d vfm  sk dsf fdg gfdg gfhgfh fhfhjhgjh jghjhgj jhghgjmnsdnokfd vfdknvfdpkfdnvfd fdlknfdknvdfkvnfdlkv fv fbj f mkndjnf fbdjgfjngg gnjgnfkmng fngkng gknfgdnkng jnfgkngknfgln ngnglngn fngknfgkn k f mkndjnf fbdjgfjngg gnjgnfkmng fngkng gknfgdnkng jnfgkngknfgln ngnglngn fngknfgknf mkndjnf fbdjgfjngg gnjgnfkmng fngkng gknfgdnkng jnfgkngknfgln ngnglngn fngknfgkn",
+          "image":[
+            {
+              "id":1,
+              "image":"https://homepages.cae.wisc.edu/~ece533/images/boat.png"
+            }
+          ] ,
+          "video": null,
+          "date": "12548/2515/2019",
+          "status": "true/false",
+          "article_type": "video/post"
+        },
+        {
+          "id": 1,
+          "title": "cat cat ",
+          "description": "b la l fbsfvdv,ovoef hjbdijsf;d vfm fv fbj f",
+          "image": [
+            {
+              "id":1,
+              "image":"https://homepages.cae.wisc.edu/~ece533/images/cat.png"
+            },
+            {
+              "id":2,
+              "image":"https://homepages.cae.wisc.edu/~ece533/images/barbara.png"
+            }
+          ],
+          "video": null,
+          "date": "12548/2515/2019",
+          "status": "true/false",
+          "article_type": "video/post"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "next_page_num": "1/null",
+      "num_pages": 2,
+      "articles": [
+        {
+          "id": 1,
+          "title": "name 2222",
+          "description": "b la l fbsfvdv,ovoef",
+          "image":[
+            {"id" :2,
+            "image":null}
+          ],
+          "video": "S_GVbuddri8",
+          "date": "12548/2515/2019",
+          "status": "true/false",
+          "article_type": "video/post"
+        },
+        {
+          "id": 2,
+          "title": "kgbrjkblj 2222",
+          "description": "b la l fbsfvdv,ovoef hjbdijsf;d vfm fv fbj f",
+          "image":[
+            {
+              "id":1,
+              "image":"https://homepages.cae.wisc.edu/~ece533/images/boat.png"
+            },
+            {
+              "id":2,
+              "image":"https://homepages.cae.wisc.edu/~ece533/images/goldhill.png"
+            }
+          ] ,
+          "video": null,
+          "date": "12548/2515/2019",
+          "status": "true/false",
+          "article_type": "video/post"
+        },
+        {
+          "id": 1,
+          "title": "cat cat 222",
+          "description": "b la l fbsfvdv,ovoef hjbdijsf;d vfm fv fbj f",
+          "image": [
+            {
+              "id":1,
+              "image":"https://homepages.cae.wisc.edu/~ece533/images/cat.png"
+            },
+            {
+              "id":1,
+              "image":"https://homepages.cae.wisc.edu/~ece533/images/girl.png"
+            }
+          ],
+          "video": null,
+          "date": "12548/2515/2019",
+          "status": "true/false",
+          "article_type": "video/post"
+        }
+      ]
+    }
+  ]
+}

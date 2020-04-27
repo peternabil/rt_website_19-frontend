@@ -1,0 +1,20 @@
+<div class="row">
+
+  <div class="col-12 col-md-6">
+    <div *ngFor="let article of articles_list; let even=even">
+      <app-article *ngIf="even"  [article]="article"></app-article>
+    </div>
+  </div>
+  <div class="col-12 col-md-6">
+      <div *ngFor="let article of articles_list; let odd=odd">
+        <app-article *ngIf="odd"  [article]="article"></app-article>
+      </div>
+  </div>
+
+  <div class="col-12 text-center mt-5" [ngClass]="{'d-none': reach_max_pages}">
+    <button class="btn btn-primary btn-round" (click)="load_more()">
+      <i class="material-icons">expand_more</i> Load More
+    </button>
+  </div>
+
+</div>

@@ -1,0 +1,36 @@
+a {
+  color: #ffffff;
+}
+
+hr {
+  background-color: #cccccc;
+  margin: 0 15%;
+}
+
+#footer-wrapper {
+  background-color: rgb(54, 53, 53);
+  color: #ffffff;
+  margin: 0;
+  padding: 0;
+}
+
+.copyright {
+  background-color: rgb(39, 39, 39);
+  padding: 10px 0;
+}
+
+.copyright span {
+  color: #cccccc;
+}
+
+.hm-gradient {
+  background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
+}
+
+.darken-grey-text {
+  color: #2E2E2E;
+}
+
+a:hover {
+  opacity: 0.5;
+}

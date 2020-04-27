@@ -1,0 +1,12 @@
+<div class="text-center p-4">
+  <h2>Meet Our Sponsors</h2>
+  <hr style="width:30%;">
+</div>
+
+<div class="container text-center" *ngIf="sponsors != null">
+  <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig" *ngIf="sponsors!=null">
+    <div ngxSlickItem *ngFor="let sponsor of sponsors" class="slide">
+      <a href="{{sponsor.url}}"><img src="{{endpoint + sponsor.image}}" alt="{{sponsor.id}}"></a>
+    </div>
+  </ngx-slick-carousel>
+</div>

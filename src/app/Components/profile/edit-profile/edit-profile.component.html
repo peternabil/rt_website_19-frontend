@@ -1,0 +1,441 @@
+<div class=" body  ">
+
+  <nav class="navbar  bg-dark">
+    <button class="btn btn-outline-primary" appSidenavToggler> <i class="fas fa-bars"></i> </button>
+  </nav>
+  <div class="container con my-4 pb-4">
+    <div class="container bar ">
+      <div class=" row">
+        <div class="col-md-10 offset-md-1 mt-5">
+          <h2 id="h" *ngIf="!editMode">Create Your Profile</h2>
+          <h2 id="h" *ngIf="editMode">Edit Your Profile</h2>
+        </div>
+      </div>
+    </div>
+    <div class="container wh">
+
+      <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+        <div class="row">
+          <div class=" col-md-10 offset-md-1">
+            <div *ngIf="(!editMode || (editpic && editMode)) && !savepic" class=" form-group ">
+              <label for="image" class="mr-4">Profile Pic</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text red">
+                    <i class="fa fa-address-card "></i>
+                  </div>
+                </div>
+                <input class="form-control" type="file" accept=".png, .jpg, .jpeg"
+                  (change)="fileChangeEvent($event, ProfileContent)" />
+              </div>
+              <span class="help-block text-danger" *ngIf="isErr('profile_pic') ">{{ msgs[0] }}</span>
+            </div>
+            <div *ngIf="editMode && !editpic && !savepic" class="my-2">
+              <div class="  col-12 text-center">
+                <img *ngIf="temp" [src]="temp" class="img-responsive  rounded-circle">
+                <br>
+                <!-- <button type="button" class="btn btn-danger mt-3 mx-2" (click)="oneditpic()">Edit profile pic</button> -->
+                <button type="button" [disabled]="removed" class="btn btn-danger mt-3 mx-2" (click)="onremovepic()">Edit
+                  Profile Pic</button>
+              </div>
+            </div>
+            <div *ngIf="savepic" class="my-2">
+              <div class="col-12 text-center">
+                <img class="img-responsive  rounded-circle" [src]="croppedImage" />
+                <br>
+
+                <button *ngIf="editMode" type="button" class="btn btn-danger ml-3 mt-3" (click)="onCancelpic()">Cancel
+                  Edit</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-10 offset-md-1">
+            <div class="form-group">
+              <label for="name">Full Name</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text red">
+                    <i class="fas fa-user "></i>
+                  </div>
+                </div>
+                <input type="text" id="name" name="name" placeholder="ex: firstname middlenaame lastname"
+                  pattern="^([a-zA-Z]{2,20})(\s)([a-zA-Z]{2,20})(\s)([a-zA-Z]{2,20})" class="form-control" ngModel
+                  required #name="ngModel">
+              </div>
+              <span class="help-block text-danger" *ngIf="isErr('name')">{{ msgs[1] }}</span>
+              <span class="help-block text-danger" *ngIf="!name.valid && name.touched && name.dirty">please enter your
+                name as follows "first middle last"</span>
+              <span class="help-block text-danger" *ngIf="!name.valid && name.touched && !name.dirty">this field is
+                required</span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-10 offset-md-1">
+            <div class="form-group">
+              <label for="mobile">Mobile</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text red">
+                    <i class="fas fa-mobile-alt"></i>
+                  </div>
+                </div>
+                <input type="text" id="mobile" pattern="^(0)(\d{10})" name="mobile" class="form-control" ngModel
+                  placeholder="01xxxxxxxxx" #mobile="ngModel">
+              </div>
+              <span class="help-block text-danger" *ngIf="isErr('mobile') && !mobile.touched">{{ msgs[17] }}</span>
+              <span class="help-block text-danger" *ngIf="!mobile.valid && mobile.touched && mobile.dirty">this mobile
+                number is not valid</span>
+              <span class="help-block text-danger" *ngIf="!mobile.valid && mobile.touched && !mobile.dirty">this field
+                is required</span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-10 offset-md-1">
+            <div class="form-group">
+              <label for="uni">University</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text red">
+                    <i class="fas fa-university"></i>
+                  </div>
+                </div>
+                <input type="text" id="uni" name="uni" class="form-control" placeholder="university" ngModel required
+                  #uni="ngModel">
+              </div>
+              <span class="help-block text-danger" *ngIf="isErr('university')">{{ msgs[4] }}</span>
+              <span class="help-block text-danger" *ngIf="!uni.valid && uni.touched">this is a required field</span>
+
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-10 offset-md-1">
+            <div class="form-group">
+              <label for="faculty">Faculty</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text red">
+                    <i class="fas fa-university"></i>
+                  </div>
+                </div>
+                <input type="text" id="faculty" name="faculty" placeholder="faculty" class="form-control" ngModel
+                  required #faculty="ngModel">
+              </div>
+              <span class="help-block text-danger" *ngIf="isErr('faculty')">{{ msgs[5] }}</span>
+              <span class="help-block text-danger" *ngIf="!faculty.valid && faculty.touched">this is a required
+                field</span>
+
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-10 offset-md-1">
+            <div class="form-group">
+              <label for="coll_id">College ID</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text red">
+                    <i class="fas fa-university"></i>
+                  </div>
+                </div>
+                <input type="text" id="coll_id" name="coll_id" class="form-control" placeholder="College ID" ngModel
+                  required #coll_id="ngModel">
+              </div>
+              <span class="help-block text-danger" *ngIf="isErr('college_id') && !coll_id.touched">{{ msgs[8] }}</span>
+              <span class="help-block text-danger" *ngIf="!coll_id.valid && coll_id.touched">this is a required
+                field</span>
+
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-10 offset-md-1">
+            <div class="form-group">
+              <label for="coll_dep">College Department</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text red">
+                    <i class="fas fa-university"></i>
+                  </div>
+                </div>
+                <input type="text" id="coll_dep" name="coll_dep" placeholder="department" class="form-control" ngModel
+                  required #coll_dep="ngModel">
+              </div>
+              <span class="help-block text-danger" *ngIf="isErr('college_department') && !coll_dep.touched">{{ msgs[6] }}</span>
+              <span class="help-block text-danger" *ngIf="!coll_dep.valid && coll_dep.touched">this is a required
+                field</span>
+
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-10 offset-md-1">
+            <div class="form-group">
+              <label for="grad_year">Expected Year Of Graduation</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text red">
+                    <i class="fas fa-university"></i>
+                  </div>
+                </div>
+                <select id="grad_year" name="grad_year" placeholder="ex: 2020" class="form-control" ngModel required
+                  #grad_year="ngModel">
+                  <option value='2019'>{{year}}</option>
+                  <option value='2020'>{{year+1}}</option>
+                  <option value='2021'>{{year+2}}</option>
+                  <option value='2021'>{{year+3}}</option>
+                  <option value='2021'>{{year+4}}</option>
+                </select>
+              </div>
+              <span class="help-block text-danger" *ngIf="isErr('graduation_year') && !grad_year.touched">{{ msgs[7] }}</span>
+              <span class="help-block text-danger"
+                *ngIf="!grad_year.valid && grad_year.touched && !grad_year.dirty">this field is required</span>
+
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-10 offset-md-1">
+            <div class="form-group">
+              <label for="address">Address</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text red">
+                    <i class="fa fa-address-card "></i>
+                  </div>
+                </div>
+                <input type="text" id="address" name="address" class="form-control" ngModel required
+                  placeholder="address" #address="ngModel">
+              </div>
+              <span class="help-block text-danger" *ngIf="isErr('address') && !address.touched">{{ msgs[3] }}</span>
+              <span class="help-block text-danger" *ngIf="!address.valid && address.touched">this is a required
+                field</span>
+
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-10 offset-md-1">
+            <div class="form-group">
+              <label for="dob">Date Of Birth</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text red">
+                    <i class="fa fa-address-card "></i>
+                  </div>
+                </div>
+                <input type="date" id="dob" name="dob" class="form-control" ngModel required #dob="ngModel">
+              </div>
+              <span class="help-block text-danger" *ngIf="isErr('birth_date') && !dob.touched">{{ msgs[2] }}</span>
+              <span class="help-block text-danger" *ngIf="!dob.valid && dob.touched">this is a required field</span>
+
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-10 offset-md-1">
+            <div class="form-group">
+              <label for="n_id">National ID</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text red">
+                    <i class="fa fa-address-card "></i>
+                  </div>
+                </div>
+                <input type="text" name="n_id" id="n_id" placeholder="national id" pattern="^(\d{14})"
+                  class="form-control" ngModel required #n_id="ngModel">
+              </div>
+              <span class="help-block text-danger" *ngIf="isErr('national_id') && !n_id.touched">{{ msgs[12] }}</span>
+              <span class="help-block text-danger" *ngIf="!n_id.valid && n_id.touched && n_id.dirty">this id is not
+                correct</span>
+              <span class="help-block text-danger" *ngIf="!n_id.valid && n_id.touched && !n_id.dirty">this field is
+                required</span>
+
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-10 offset-md-1">
+            <div class="form-group">
+              <label for="n_id_f_c">National ID Front Cover</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text red">
+                    <i class="fa fa-address-card "></i>
+                  </div>
+                </div>
+                <input (change)="onUploadChange($event,1)" name="n_id_f_c" accept=".png, .jpg, .jpeg" type="file"
+                  id="n_id_f_c" class="form-control" ngModel [required]="!editMode" #n_id_f_c="ngModel"
+                  ngf-max-size="500KB">
+              </div>
+              <span class="help-block text-danger" *ngIf="isErr('national_front') &&!n_id_f_c.touched">{{ msgs[13] }}</span>
+              <span class="help-block text-danger" *ngIf="!n_id_f_c.valid && n_id_f_c.touched && !n_id_f_c.dirty">this
+                field is
+                required</span>
+
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-10 offset-md-1">
+            <div class="form-group">
+              <label for="n_id_b_c">National ID Back Cover</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text red">
+                    <i class="fa fa-address-card "></i>
+                  </div>
+                </div>
+                <input (change)="onUploadChange($event,2)" name="n_id_b_c" accept=".png, .jpg, .jpeg" type="file"
+                  id="n_id_b_c" class="form-control" ngModel [required]="!editMode" #n_id_b_c="ngModel"
+                  ngf-max-size="500KB">
+              </div>
+              <span class="help-block text-danger" *ngIf="isErr('national_back') && !n_id_b_c.touched">{{ msgs[14] }}</span>
+              <span class="help-block text-danger" *ngIf="!n_id_b_c.valid && n_id_b_c.touched && !n_id_b_c.dirty">this
+                field is
+                required</span>
+
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-10 offset-md-1">
+            <div class="form-group">
+              <label for="pass_id">Passport ID</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text red">
+                    <i class="fa fa-address-card "></i>
+                  </div>
+                </div>
+                <input type="text" id="pass_id" name="pass_id" class="form-control" placeholder="passport id" ngModel
+                  #pass_id="ngModel">
+              </div>
+              <span class="help-block text-danger" *ngIf="isErr('passport_id') && !pass_id.touched" #pass>{{ msgs[15] }}</span>
+
+
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-10 offset-md-1">
+            <div class="form-group">
+              <label for="pass_id_img">Passport ID First Page Image</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text red">
+                    <i class="fa fa-address-card "></i>
+                  </div>
+                </div>
+                <input (change)="onUploadChange($event,3)" name="pass_id_img" accept=".png, .jpg, .jpeg" type="file"
+                  id="pass_id_img" class="form-control" ngModel #pass_id_img="ngModel" ngf-max-size="500KB">
+              </div>
+              <span class="help-block text-danger" *ngIf="isErr('passport_img') && !pass_id_img.touched">{{ msgs[16] }}</span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-10 offset-md-1">
+            <div class="form-group">
+              <label for="em_name">Emergecy Contact Name</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text red">
+                    <i class="fas fa-user "></i>
+                  </div>
+                </div>
+                <input type="text" id="em_name" name="em_name" class="form-control"
+                  placeholder="ex: firstname middlenaame lastname" ngModel required #em_name="ngModel"
+                  pattern="([a-zA-Z]{2,20})(\s)([a-zA-Z]{2,20})(\s)([a-zA-Z]{2,20})">
+              </div>
+              <span class="help-block text-danger" *ngIf="isErr('emergency_name')">{{ msgs[9] }}</span>
+              <span class="help-block text-danger" *ngIf="!em_name.valid && em_name.touched && em_name.dirty">please
+                enter the name as follows "first middle last"</span>
+              <span class="help-block text-danger" *ngIf="!em_name.valid && em_name.touched && !em_name.dirty">this
+                field is required</span>
+
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-10 offset-md-1">
+            <div class="form-group">
+              <label for="em_mobile">Emergecy Contact Mobile</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text red">
+                    <i class="fas fa-mobile-alt"></i>
+                  </div>
+                </div>
+                <input type="text" id="em_mobile" name="em_mobile" class="form-control" pattern="^(0)(\d{10})"
+                  placeholder="ex: 01xxxxxxxx" ngModel required #em_mobile="ngModel">
+              </div>
+              <span class="help-block text-danger" *ngIf="isErr('emergency_mobile') && !em_mobile.touched">{{ msgs[10] }}</span>
+              <span class="help-block text-danger" *ngIf="!em_mobile.valid && em_mobile.touched && em_mobile.dirty">this
+                number is not valid</span>
+              <span class="help-block text-danger"
+                *ngIf="!em_mobile.valid && em_mobile.touched && !em_mobile.dirty">this field is required</span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-10 offset-md-1">
+            <div class="form-group">
+              <label for="em_relation">Emergecy Contact Relation</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text red">
+                    <i class="fas fa-user "></i>
+                  </div>
+                </div>
+                <input type="text" id="em_relation" name="em_relation" class="form-control" placeholder="ex: cousin"
+                  ngModel required #em_relation="ngModel">
+              </div>
+              <span class="help-block text-danger" *ngIf="isErr('emergency_relation') && !em_relation.touched">{{ msgs[11] }}</span>
+              <span class="help-block text-danger"
+                *ngIf="!em_relation.valid && em_relation.touched && !em_relation.dirty">this field is
+                required</span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-10 offset-md-1">
+            <button type="submit" class="btn btn-danger" [disabled]="!f.valid || submitBtn"
+              style="margin-right:5px;">{{editMode ? 'Update' : 'Create'}}</button>
+            <img *ngIf="loading"
+              src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+            <button type="button" class="btn btn-danger" (click)="onCancel()">Cancel</button>
+          </div>
+        </div>
+
+
+      </form>
+
+    </div>
+  </div>
+</div>
+
+<ng-template #ProfileContent let-c="close" let-d="dismiss">
+  <div class="modal-body container">
+    <div class="row">
+      <div class="col-12 mt-5">
+        <img *ngIf="imageLoadedFlag" class="mx-auto d-block" src="../../../../assets/loader-100px.gif" />
+      </div>
+      <div class="col-6">
+        <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="1 / 1"
+          [cropperMinWidth]="300" [resizeToWidth]="300" format="png" (imageCropped)="imageCropped($event)"
+          (imageLoaded)="imageLoaded()" (loadImageFailed)="loadImageFailed()"></image-cropper>
+      </div>
+      <div class="col-6">
+        <img class="img-fluid" [src]="croppedImage" />
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="c('Save click'); onSave()">Save</button>
+  </div>
+</ng-template>

@@ -1,0 +1,46 @@
+<!-- Add new Sponsor -->
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header card-header-text card-header-info">
+        <div class="card-text">
+          <h4 class="card-title">New Sponsor</h4>
+        </div>
+      </div>
+      <div class="card-body">
+
+        <form [formGroup]="sponsor_form" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <input type="text" placeholder="redirect url" class="form-control" formControlName="url">
+          </div>
+          <div class="row">
+            <div class="col-8">
+              <div class="form-group" *ngIf="sponsor_form.value.image == null">
+                <label for="new-sponsor"  class="btn btn-info btn-round"><i class="material-icons">add</i>Add Image</label>
+                <input type="file" style="display:none;" id="new-sponsor" (change)="change_sponsor_img($event)">
+              </div>
+
+              <div *ngIf="sponsor_form.value.image != null">
+                <div class="d-inline-block position-relative">
+                    <img [src]="sponsor_form.value.image"  class="img-thumbnail rounded">
+                    <button class="btn btn-sm btn-danger btn-fab btn-fab-mini btn-round mr-2 delete-btn position-absolute"
+                              (click)="delete_img()">
+                              <i class="material-icons">delete</i></button>
+                  </div>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="form-group">
+                <button type="submit" class="btn btn-primary" [disabled]="sponsor_form.invalid || submitted">Submit</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      
+      </div>
+    </div>
+  </div>
+
+</div>
+<hr>
+<!-- ./Add new Sponsor -->

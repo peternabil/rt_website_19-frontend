@@ -1,0 +1,44 @@
+/**
+* ng class style
+*/
+
+input.ng-invalid.ng-touched {
+  border-color: red;
+}
+
+/**
+* Default Style
+*/
+
+section.auth-body{
+  width: 100vw;
+  height: 100vh;
+  background-color: #fbfbfb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-signin {
+  border: 0;
+  border-radius: 1rem;
+  box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.card-signin .card-title {
+  margin-bottom: 2rem;
+  font-weight: 300;
+  font-size: 1.5rem;
+}
+
+.card-signin .card-img-left {
+  width: 45%;
+  /* Link to your background image using in the property below! */
+  background: scroll center url('https://scontent-hbe1-1.xx.fbcdn.net/v/t1.0-9/19437469_1437882699606496_7614585075306327369_n.jpg?_nc_cat=110&_nc_ht=scontent-hbe1-1.xx&oh=5f62762fd3fe2673ae7505a12c678cf0&oe=5CDA7067');
+  background-size: cover;
+}
+
+.card-signin .card-body {
+  padding: 2rem;
+}

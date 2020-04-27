@@ -1,0 +1,70 @@
+<section class="navbar-wrapper" #navbar_wrapper>
+
+  <nav class="navbar navbar-expand-lg navbar-light" #navbar [ngClass]="{'navbar-collapsed': navbar_status}">
+    <div class="container">
+
+      <a class="navbar-brand" [routerLink]="[ '/' ]" >
+        <img src="https://asuracingteam.org/assets/navbar/logo.png" alt="logo">
+      </a>
+
+      <button class="navbar-toggler border-0" type="button" (click)="toggle_navbar()">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="navbar-collapse collapse" [ngClass]="{'show': navbar_status}">
+        <ul class="navbar-nav ml-auto">
+
+          <li data-toggle="collapse" data-target=".navbar-collapse.show" class="nav-item cursor-ptr" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            <a class="nav-link" [routerLink]="[ '/' ]" >Home</a>
+          </li>
+
+          <li data-toggle="collapse" data-target=".navbar-collapse.show" class="nav-item cursor-ptr" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            <a class="nav-link" [routerLink]="[ '/teams' ]" >Teams</a>
+          </li>
+          <li data-toggle="collapse" data-target=".navbar-collapse.show" class="nav-item cursor-ptr" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" *ngIf="events!=null">
+            <!-- <a class="nav-link" [routerLink]="[ '/events', events[0].id]" >Events</a> -->
+          </li>
+
+          <!-- <li class="nav-item cursor-ptr" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
+            ngbDropdown>
+            <a class="nav-link" ngbDropdownToggle>Events</a>
+            <div data-toggle="collapse" data-target=".navbar-collapse.show" ngbDropdownMenu *ngFor="let event of events">
+              <button  class="dropdown-item" ngbDropdownItem
+                [routerLink]="[ '/events',event.id]">{{event.title}}</button>
+            </div>
+          </li> -->
+
+
+          <li data-toggle="collapse" data-target=".navbar-collapse.show" class="nav-item cursor-ptr" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            <a class="nav-link" [routerLink]="[ '/newsfeed' ]" >NewsFeed </a>
+          </li>
+          <li data-toggle="collapse" data-target=".navbar-collapse.show" class="nav-item cursor-ptr" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            <a class="nav-link" [routerLink]="[ '/aboutus']" >About us </a>
+          </li>
+
+          <ng-container *ngIf="loggedInUserName == null; else logout">
+            <li data-toggle="collapse" data-target=".navbar-collapse.show" class="nav-item cursor-ptr" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+              <a class="nav-link" [routerLink]="[ '/auth/login']" >Login/Register </a>
+            </li>
+          </ng-container>
+
+          <ng-template #logout>
+
+            <li data-toggle="collapse" data-target=".navbar-collapse.show" class="nav-item cursor-ptr" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
+              ngbDropdown>
+              <a class="nav-link" ngbDropdownToggle >Profile</a>
+              <div ngbDropdownMenu>
+                <button class="dropdown-item" ngbDropdownItem
+                  [routerLink]="[ '/profile/view']" >{{loggedInUserName}}</button>
+                <button class="dropdown-item" ngbDropdownItem (click)="onLogout()" >Logout</button>
+              </div>
+            </li>
+          </ng-template>
+
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+</section>

@@ -1,0 +1,67 @@
+<div class="row justify-content-md-center">
+  <div class="col-8">
+    <form [formGroup]="card_form" (ngSubmit)="onSubmit()">
+      <div class="card card-chart">
+        <div class="card-header card-header-light p-0">
+          <div class="ct-chart position-relative" id="dailySalesChart">
+              <div *ngIf="cropper.show" class="image-cropper rounded">
+                <image-cropper
+                [imageChangedEvent]="imageChangedEvent"
+                [maintainAspectRatio]="true"
+                [aspectRatio]="18 / 9"
+                [resizeToWidth]=""
+                format="png"
+                (imageCropped)="imageCropped($event)"
+                (loadImageFailed)="loadImageFailed()"
+              ></image-cropper>
+              </div>
+            <img src="{{ card_form.value.image != null ? card_form.value.image : 'https://dummyimage.com/600x300/#eee/fff' }}" 
+              class="rounded" alt="" style="width:100%" *ngIf="!cropper.show">
+            <label for="image-input-btn" class="btn btn-sm btn-success btn-fab btn-fab-mini btn-round position-absolute add-image-btn"><i class="material-icons">add_photo_alternate</i></label>
+            <input type="file" id="image-input-btn" style="display:none"
+              (change)="onImgChange($event)" >
+          </div>
+          
+        </div>
+        <div class="card-body position-relative">
+          <div class="card-title">
+            <div class="form-group">
+                <label>Title</label>
+                <input type="text" class="form-control" placeholder="Highlight Title"
+                  formControlName="title">
+              </div>
+            </div>
+            <div class="card-category">
+              <div class="form-group">
+                <label>Description</label>
+                <textarea type="text" class="form-control" placeholder="Highlight Description"
+                  formControlName="description"></textarea>
+              </div>
+              <div class="form-group">
+                <label>Url</label>
+                <input type="text" class="form-control"  placeholder="Highlight Redirect URL"
+                  formControlName="url">
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <div class="form-check">
+                      <label class="form-check-label">
+                          <input class="form-check-input" type="checkbox"
+                            formControlName="active">
+                            Set Active Highlight
+                          <span class="form-check-sign">
+                              <span class="check"></span>
+                          </span>
+                      </label>
+                  </div>
+                </div>
+                <div class="col-6 text-right">
+                    <button type="submit" class="btn btn-primary" [disabled]="card_form.invalid || submitted">{{ editmode.flag ? 'Update' : 'Submit'}}</button>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

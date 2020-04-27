@@ -1,0 +1,13 @@
+<div class="card posotion-relative" *ngFor="let QA of FAQ_list">
+  <div class="card-body">
+    {{QA.question}}
+    <div class="row">
+      <div class="col offset-1 border-left">
+        {{QA.answer}}
+      </div>
+    </div>
+  </div>
+  <button class="btn btn-sm btn-danger btn-fab btn-fab-mini btn-round mr-2 delete-btn position-absolute"
+                (click)="delete_QA(QA.id)">
+                <i class="material-icons">delete</i></button>
+</div>

@@ -1,0 +1,43 @@
+/* @import '//fonts.googleapis.com/css?family=Bangers'; */
+
+body {
+  margin: 0;
+}
+
+.wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+}
+
+.time-to {
+  text-align: center;
+  font-family: Bangers;
+  color: Black;
+  font-size: 40px;
+  letter-spacing: 1.5px;
+}
+
+.time-to span {
+  display: block;
+  font-size: 2rem;
+  color: red;
+}
+span{
+  font-family: Impact, Charcoal, sans-serif;
+  font-style: italic;
+  color: #450202;
+}
+
+@media (max-width: 640px) {
+
+.time-to {
+  font-size: 20px;
+}
+
+.time-to span {
+  font-size: 1.5rem;
+}
+
+}

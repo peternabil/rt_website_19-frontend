@@ -1,0 +1,12 @@
+<div class="row justify-content-center">
+  <div class="col-6 col-md-4 my-2 " *ngFor="let sponsor of sponsers_list; let i=index">
+    <div class="d-inline-block position-relative">
+      <a  [href]="sponsor.url"  target="_blank" >
+        <img [src]="endpoint+sponsor.image"  class="img-thumbnail rounded">
+      </a>
+      <button class="btn btn-sm btn-danger btn-fab btn-fab-mini btn-round mr-2 delete-btn position-absolute"
+                (click)="delete_sponsor(sponsor.id)">
+                <i class="material-icons">delete</i></button>
+    </div>
+  </div>
+</div>

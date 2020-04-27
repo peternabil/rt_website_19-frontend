@@ -1,0 +1,95 @@
+<div class="sidebar" data-color="purple" data-background-color="white">
+  <!--
+    Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
+
+    Tip 2: you can also add an image using data-image tag
+-->
+  <div class="logo">
+    <h2 class="simple-text logo-mini">ASURT</h2>
+  </div>
+  <div class="sidebar-wrapper">
+    <ul class="nav">
+
+      
+      <li class="nav-item" [routerLink]="['./']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
+        true}">
+        <a class="nav-link cursor-ptr">
+          <i class="material-icons">dashboard</i>
+          <p>Dashboard</p>
+        </a>
+      </li>
+      
+      <ng-container *ngIf="show('users')">
+        <li class="nav-item" [routerLink]="['users']" routerLinkActive="active">
+          <a class="nav-link cursor-ptr">
+            <i class="material-icons">person</i>
+            <p>Users</p>
+          </a>
+        </li>
+      </ng-container>
+
+      <ng-container *ngIf="show('highlights')">
+        <li class="nav-item"  [routerLink]="['highlights']"
+                              routerLinkActive="active">
+          <a class="nav-link cursor-ptr">
+            <i class="material-icons">slideshow</i>
+            <p>Highlights</p>
+          </a>
+        </li>
+      </ng-container>
+      
+      <ng-container *ngIf="show('events')">
+        <li class="nav-item"  [routerLink]="['events']"
+                              routerLinkActive="active">
+          <a class="nav-link cursor-ptr">
+            <i class="material-icons">slideshow</i>
+            <p>Events</p>
+          </a>
+        </li>
+      </ng-container>
+      
+      <ng-container *ngIf="show('news-feed')">
+        <li class="nav-item"  [routerLink]="['news-feed/','all']"
+                              routerLinkActive="active">
+          <a class="nav-link cursor-ptr">
+            <i class="material-icons">view_agenda</i>
+            <p>NewsFeed</p>
+          </a>
+        </li>
+      </ng-container>
+      
+      <ng-container *ngIf="show('teams')">
+        <li class="nav-item"  [routerLink]="['teams/','all']"
+                              routerLinkActive="active">
+          <a class="nav-link cursor-ptr">
+            <i class="material-icons">local_activity</i>
+            <p>Teams</p>
+          </a>
+        </li>
+      </ng-container>
+      
+      <ng-container *ngIf="show('sponsors')">
+        <li class="nav-item"  [routerLink]="['sponsors']"
+                              routerLinkActive="active">
+          <a class="nav-link cursor-ptr">
+            <i class="material-icons">monetization_on</i>
+            <p>Sponsors</p>
+          </a>
+        </li>
+      </ng-container>
+      
+      <ng-container *ngIf="show('FAQ')">
+        <li class="nav-item"  [routerLink]="['FAQ']"
+                              routerLinkActive="active">
+          <a class="nav-link cursor-ptr">
+            <i class="material-icons">new_releases</i>
+            <p>FAQ</p>
+          </a>
+        </li>
+      </ng-container>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="close-layer" [ngClass]="{'visible': sidebar_status}" (click)="admin_sidebar_toggle()"></div>

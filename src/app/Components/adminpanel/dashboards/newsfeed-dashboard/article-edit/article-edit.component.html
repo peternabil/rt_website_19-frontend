@@ -1,0 +1,91 @@
+<form [formGroup]="article_form" (ngSubmit)="onSubmit()">
+  <div class="row justify-content-center">
+
+    <div class="col-md-8">
+
+      <ul class="nav nav-pills nav-pills-primary nav-pills-icons m-auto">
+        <li class="nav-item">
+          <a class="nav-link cursor-ptr" (click)="change_type('text')" [ngClass]="{active: article_type == 'text'}">
+            <i class="material-icons">text_fields</i>
+            Text only
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link cursor-ptr" (click)="change_type('image')" [ngClass]="{active: article_type == 'image'}">
+            <i class="material-icons">collections</i>
+            With Image
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link cursor-ptr" (click)="change_type('video')" [ngClass]="{active: article_type == 'video'}">
+            <i class="material-icons">video_library</i>
+            With Video
+          </a>
+        </li>
+      </ul>
+
+
+      <div class="card card-chart mb-3">
+        <div class="card-header card-header-light p-0">
+          <div class="ct-chart position-relative" id="dailySalesChart">
+
+            <div *ngIf="article_type == 'image'">
+              <!-- Image section -->
+              <div *ngIf="cropper_show" class="image-cropper rounded">
+                <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true"
+                  [aspectRatio]="18 / 9" [resizeToWidth]="" format="png" (imageCropped)="imageCropped($event)"
+                  (loadImageFailed)="loadImageFailed()"></image-cropper>
+              </div>
+
+              <img
+                src="{{ article_form.value.image != null ? endpoint+article_form.value.image : 'https://dummyimage.com/600x300/#eee/fff'}}"
+                class="rounded" alt="" style="width:100%" *ngIf="!cropper_show">
+              <label for="image-input-btn"
+                class="btn btn-sm btn-success btn-fab btn-fab-mini btn-round position-absolute add-image-btn"><i
+                  class="material-icons">add_photo_alternate</i></label>
+              <input type="file" id="image-input-btn" style="display:none" (change)="onImgChange($event)">
+
+              <!-- ./Image section -->
+            </div>
+
+            <div class="embed-responsive embed-responsive-16by9 rounded" *ngIf="article_type == 'video'">
+              <iframe class="embed-responsive-item" [src]="video_embedd_link" allowfullscreen></iframe>
+            </div>
+
+          </div>
+        </div>
+        <div class="card-body position-relative">
+
+          <div class="form-group my-3">
+            <label>Title</label>
+            <input type="text" class="form-control" formControlName="title" placeholder="Article title here">
+          </div>
+          <div class="form-group">
+            <label>Description</label>
+            <textarea type="text" class="form-control" formControlName="description"
+            placeholder="Article description"></textarea>
+          </div>
+          <div class="form-group">
+            <label>Change Date Post</label>
+            <input type="date" class="form-control" formControlName="date" placeholder="Article title here">
+          </div>
+
+          <div class="form-group" *ngIf="article_type == 'video'">
+            <label>Youtube video link</label>
+            <input type="text" class="form-control" formControlName="video" placeholder="Article title here">
+          </div>
+
+          <div>
+            <button type="submit" class="btn btn-primary btn-block"
+              [disabled]="article_form.invalid || submitted">{{ editmode.flag ? 'Update' : 'Submit'}}</button>
+          </div>
+          <!-- ./card-body -->
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</form>

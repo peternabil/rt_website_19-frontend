@@ -1,0 +1,54 @@
+<!-- row -->
+<div class="row">
+
+  <!-- col -->
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header card-header-primary">
+        <h4 class="card-title ">Users</h4>
+        <!-- <p class="card-category">--------</p> -->
+      </div>
+      <div class="card-body">
+        <!-- Search -->
+        <div class="form-group bmd-form-group">
+          <input type="text" class="form-control" placeholder="Search" [formControl]="search_field">
+        </div>
+        <!-- ./Search -->
+
+        <div class="table-responsive">
+          <table class="table">
+            <thead class="text-primary">
+              <th>id</th>
+              <th>name</th>
+              <th>email</th>
+              <th>phone</th>
+              <th>college id</th>
+              <th>permissions</th>
+            </thead>
+            <tbody>
+              <tr *ngFor="let user of users_table; let i = index">
+                <td>{{user.id}}</td>
+                <td>{{user.name}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.phone}}</td>
+                <td>{{user.college_id}}</td>
+                <td>
+                  <div class="form-group bmd-form-group">
+                    <select class="form-control" (change)="update_group($event.target.value,user.id)">
+                      <option class="my-2" *ngFor="let group of user_groups" 
+                        [value]="group.name"
+                        [selected]="(group.name == user.group)">{{group.name}}</option>
+                    </select>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ./col -->
+
+</div>
+<!-- ./row -->

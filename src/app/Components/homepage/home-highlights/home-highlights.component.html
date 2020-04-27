@@ -1,0 +1,14 @@
+<ngb-carousel #carousel *ngIf="highlights!=null">
+  <ng-template ngbSlide *ngFor="let highlight of highlights">
+    <div class="row highlight-wrapper" *ngIf="highlight!=null">
+      <div class="carousel-image col-12 p-0">
+        <img src="{{endpoint + highlight.image[highlight.image.length-1].image}}" alt="highlight {{highlight.id}}">
+      </div>
+      <div class="carousel-caption text-justify col-md-4 col-sm-5 col-6">
+        <h3>{{highlight.title}}</h3>
+        <p>{{highlight.description}}</p>
+        <a href="{{highlight.url}}">Read More</a>
+      </div>
+    </div>
+  </ng-template>
+</ngb-carousel>

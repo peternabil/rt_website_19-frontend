@@ -1,0 +1,95 @@
+<div class=" body " *ngIf="loaded">
+
+
+    <nav class="navbar  bg-dark">
+        <button class="btn btn-outline-primary" appSidenavToggler> <i class="fas fa-bars"></i> </button>
+    </nav>
+    <div class="container cont pt-4 pb-4 mt-3 mb-3">
+        <h1 id="h">Profile</h1>
+        <div class="row  justify-content-center">
+            <div class="col-lg-4 col-md-12">
+                <div class="text-center">
+                    <img *ngIf="NullImage" alt="" src="https://t4.ftcdn.net/jpg/02/15/84/43/240_F_215844325_ttX9YiIIyeaR7Ne6EaLLjMAmy4GvPC69.jpg" class="img-responsive  img-responsive img-rounded ">
+                    <img *ngIf="!NullImage" alt="" [src]="pro.profile_pic" class="img-responsive  rounded-circle ">
+
+                    <div class="col text-center">
+                        <button class="btn btn-danger my-4" type="button" (click)="onEdit()">Edit Profile</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <table class="table mb-0">
+                    <tbody>
+                        <tr>
+                            <td width="50%"><strong>Full Name:</strong></td>
+                            <td width="50%">{{pro.name}}</td>
+                        </tr>
+                        <tr>
+                            <td width="50%"><strong>Mobile:</strong></td>
+                            <td width="50%">{{pro.mobile}}</td>
+                        </tr>
+                        <tr>
+                            <td width="50%"><strong>Date Of Birth:</strong></td>
+                            <td width="50%">{{pro.birth_date}}</td>
+                        </tr>
+                        <tr>
+                            <td width="50%"><strong>University:</strong></td>
+                            <td width="50%">{{pro.university}}</td>
+                        </tr>
+                        <tr>
+                            <td width="50%"><strong>Faculty:</strong></td>
+                            <td width="50%">{{pro.faculty}}</td>
+                        </tr>
+                        <tr>
+                            <td width="50%"><strong>College ID:</strong></td>
+                            <td width="50%">{{pro.college_id}}</td>
+                        </tr>
+                        <tr>
+                            <td width="50%"><strong>Department:</strong></td>
+                            <td width="50%">{{pro.college_department}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td width="50%"><strong>Year Of Graduation:</strong></td>
+                            <td width="50%">{{pro.graduation_year}}</td>
+                        </tr>
+                        <tr>
+                            <td width="50%"><strong>National ID:</strong></td>
+                            <td width="50%">{{pro.national_id}}</td>
+                        </tr>
+                        <tr *ngIf="pro.passport_id">
+                            <td width="50%"><strong>Passport ID:</strong></td>
+                            <td width="50%">{{pro.passport_id}}</td>
+                        </tr>
+                        <tr>
+                            <td width="50%"><strong>Contact Name:</strong></td>
+                            <td width="50%">{{pro.emergency_name}}</td>
+                        </tr>
+                        <tr>
+                            <td width="50%"><strong>Contact Mobile:</strong></td>
+                            <td width="50%">{{pro.emergency_mobile}}</td>
+                        </tr>
+                        <tr>
+                            <td width="50%"><strong>Contact Relation:</strong></td>
+                            <td width="50%">{{pro.emergency_relation}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col text-center">
+                <button class="btn btn-danger" type="button" (click)="previewNational_ID_Front()" *ngIf="pro.national_front">National ID Front</button>
+            </div>
+            <div class="col text-center">
+                <button class="btn btn-danger" type="button" (click)="previewNational_ID_Back()" *ngIf="pro.national_back">National ID Back</button>
+            </div>
+            <div *ngIf="pro.passport_img" class="col text-center">
+                <button class="btn btn-danger" type="button" (click)="previewPassport_ID()">Passport Image</button>
+            </div>
+        </div>
+    </div>
+</div>

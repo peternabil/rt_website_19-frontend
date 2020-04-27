@@ -1,0 +1,24 @@
+@import "https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons";
+/* @import "https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css"; */
+@import "./assets/css/material-dashboard.css";
+
+.cursor-ptr{
+    cursor: pointer;
+}
+
+.card-transparent{
+    border:none;
+    background-color: transparent;
+    box-shadow: none;
+}
+
+.control-btns{
+    top:-1.2em;
+    right:0;
+    z-index: 1020;
+}
+
+.delete-btn{
+    right: 0.4em;
+    bottom: -0.8em;
+}

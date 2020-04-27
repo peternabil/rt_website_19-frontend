@@ -1,0 +1,15 @@
+ngx-slick-carousel {
+  height: 160px;
+  border: 1px dashed #ddd;
+  border-radius: 25px;
+  box-shadow: 0 0 0 3px #fff, 0 0 0 5px #ddd, 0 0 0 10px #fff, 0 0 2px 10px #eee;
+  margin-bottom: 2rem;
+}
+
+img {
+  height: 140px;
+  width: 180px;
+  margin: auto;
+  margin-bottom: 0.6rem;
+  margin-top: 0.6rem;
+}

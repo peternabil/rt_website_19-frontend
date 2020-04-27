@@ -1,0 +1,30 @@
+<div class="text-center pt-4 pr-4 pl-4 pb-0">
+  <h2>Upcoming Events</h2>
+  <hr style="width:30%;">
+</div>
+
+<!-- <div [ngsReveal]="{ reset: true}" class=" blog-card" *ngFor="let event of events; let i = index" [ngClass]=" {'alt':i%2!=0}"> -->
+
+<div class=" container" *ngFor="let event of events; let i = index" [ngClass]=" {'alt':i%2!=0}" (window:resize)="onResize($event)" >
+  <div class="meta">
+    <div class="photo"></div>
+    <img src="{{ endpoint + event.image[event.image.length-1].image}}" alt="{{event.image[event.image.length-1].id}}" class="w-100">
+  </div>
+  <div class="description" [ngsReveal]="{ reset: true}">
+    <div class="inner-description">
+      <button class="btn btn-link my-4"><h2 (click)="onview(i)">{{event.name | uppercase}}</h2></button>
+      <p></p>
+      <div class="d-none d-md-block">
+        <p> {{event.description}}</p>
+        <p class=" read-more">
+          <!-- <a [routerLink]="[/#]" routerLinkActive="active">Read More</a> -->
+          <button class="btn btn-link my-4" type="button" (click)="onview(i)">Read More</button>
+
+        </p>
+      </div>
+    </div>
+    <div class="counter align-bottom">
+      <countdown-timer [inputDate]="event.date" > </countdown-timer>
+    </div>
+  </div>
+</div>

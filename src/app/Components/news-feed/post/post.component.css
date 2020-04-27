@@ -1,0 +1,19 @@
+.post{
+    border-radius: 1rem;
+    box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    /* background-color:rgba(255, 255, 255, 0.425); */
+    align-self: center;
+}
+.text {
+    box-sizing: border-box;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    overflow: hidden;
+    display: block;
+    position: static;
+}
+.media{
+    max-width: 800px;
+    max-height: 600px;
+}

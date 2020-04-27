@@ -1,0 +1,62 @@
+<div *ngIf="article.article_type == 'image' || article.article_type == 'video'; else text_article">
+  
+
+    <div class="card card-chart mb-3">
+        <div class="card-header card-header-light p-0">
+          <div class="ct-chart" id="dailySalesChart">
+            <div *ngIf="article.article_type == 'image'">
+              <img src="{{endpoint + article.image[article.image.length -1].image}}" class="rounded" alt="" style="width:100%">
+            </div>
+      
+            <div class="embed-responsive embed-responsive-16by9 rounded" *ngIf="article.article_type == 'video'">
+                <iframe class="embed-responsive-item" [src]="video_embedd_link" allowfullscreen></iframe>
+            </div>            
+          </div>
+        </div>
+        <div class="card-body position-relative">
+          <div class="control-btns position-absolute">
+            <button class="btn btn-sm btn-success btn-fab btn-fab-mini btn-round mr-2" [routerLink]="['../edit/',article.id]" routerLinkActive="active" >
+                <i class="material-icons">edit</i></button>
+            <button class="btn btn-sm btn-danger btn-fab btn-fab-mini btn-round mr-2"
+                (click)="delete_article()">
+                <i class="material-icons">delete</i></button>
+          </div>
+          <h4 class="card-title">{{article.title}}</h4>
+          <p class="card-category">
+            {{article.description}}
+          </p>
+        </div>
+      </div>
+
+
+    </div>
+
+<ng-template #text_article>
+  
+  
+  <div class="card bg-info mb-3">
+    <div class="card-body">
+      <h4 class="card-title">
+        {{article.title}}
+      </h4>
+      <div class="card-body">
+        <h6>
+          {{article.description}}
+        </h6>
+      </div>
+      <div class="card-stats">
+        <div class="stats ml-auto">
+          <div class="control-btns position-absolute">
+            <button class="btn btn-sm btn-success btn-fab btn-fab-mini btn-round mr-2" [routerLink]="['../edit/',article.id]" routerLinkActive="active" >
+                <i class="material-icons">edit</i></button>
+            <button class="btn btn-sm btn-danger btn-fab btn-fab-mini btn-round mr-2"
+                (click)="delete_article()">
+                <i class="material-icons">delete</i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</ng-template>

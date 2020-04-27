@@ -1,0 +1,87 @@
+
+<!-- <br>
+<br>
+<br>
+<h1 style="text-align:center">Teams </h1>
+<hr>
+<div id="top" *ngIf="management_teams != null">
+  <br>
+<div class="row centered" *ngIf="teams != null">
+
+  <div class="col-sm-6 col-lg-4  col-xs-6 centered"*ngFor="let team of teams" >
+      <div [ngsReveal]="{ reset: true}" *ngIf="team != null"
+      class="card text-white border-danger bg-light mb-3 centered tech" style="width: 16rem;height: 25rem;">
+        <img class="card-img-top" src="http://127.0.0.1:8000{{team.image[team.image.length-1].image}}" alt="Card image cap">
+        <div class="card-body">
+          <hr style="border-color: red;">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item list-group-item-dark"><h4>{{team.name | uppercase}}</h4><small>{{team.team_type}}</small></li>
+          <li class="list-group-item list-group-item-dark"><a href="teams/{{team.id}}" class="btn btn-light">More  Info</a></li>
+        </ul>
+        </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4 col-xs-6 centered"*ngFor="let team of management_teams" >
+          <div [ngsReveal]="{ reset: true}" *ngIf="team != null"
+          class="card text-white border-danger bg-light mb-3 centered tech" style="width: 16rem;">
+            <img class="card-img-top" src="http://127.0.0.1:8000{{team.image[team.image.length-1].image}}" alt="Card image cap">
+            <div class="card-body">
+              <hr style="border-color: black;">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item list-group-item-dark"><h4>{{team.name | uppercase}}</h4><small>{{team.team_type}}</small></li>
+              <li class="list-group-item list-group-item-dark"><a href="teams/{{team.id}}" class="btn btn-light">More  Info</a></li>
+
+
+            </ul>
+
+            </div>
+            </div>
+          </div>
+  </div>
+</div>
+
+<br>
+<br> -->
+
+<!-- <div id="bottom">
+  <br>
+<div class="row centered" [ngsReveal]="{ reset: true}">
+
+
+  </div>
+</div> -->
+
+
+
+<br>
+<br>
+<br>
+<h1 style="text-align:center">Teams </h1>
+<hr>
+<br>
+<div class="main centered" *ngIf="management_teams != null">
+  <ul class="cards centered" *ngIf="teams != null">
+    <li class="cards_item centered" *ngFor="let team of teams">
+      <div class="card centered" style="width: 16rem;" [ngsReveal]="{ reset: true}">
+        <div class="card_image"><img src="{{endpoint + team.image[team.image.length-1].image}}" *ngIf="team != null"></div>
+        <div class="card_content" *ngIf="team != null">
+          <h2 class="card_title" *ngIf="team != null">{{team.name | uppercase}}</h2>
+          <p class="card_text" *ngIf="team != null">{{team.team_type}}</p>
+          <a href="teams/{{team.id}}" class="btn btn-dark">Read More</a>
+        </div>
+      </div>
+    </li>
+    <li class="cards_item centered" *ngFor="let team of management_teams">
+      <div class="card centered" style="width: 16rem;" [ngsReveal]="{ reset: true}">
+        <div class="card_image"><img src="{{ endpoint + team.image[team.image.length-1].image}}" *ngIf="team != null"></div>
+        <div class="card_content" *ngIf="team != null">
+          <h2 class="card_title" *ngIf="team != null">{{team.name | uppercase}}</h2>
+          <p class="card_text" *ngIf="team != null">{{team.team_type}}</p>
+          <a href="teams/{{team.id}}" class="btn btn-dark">Read More</a>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<!-- <h3 class="made_by">Made with ♡</h3> -->

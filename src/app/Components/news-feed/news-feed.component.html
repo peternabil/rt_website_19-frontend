@@ -1,0 +1,29 @@
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  <div class=" mt-5 "*ngIf="loaded">
+    <div class="col-12 content">
+
+        <div class="row container mx-auto">
+          <div class="col-12">
+            <app-post *ngFor="let post of posts;let i=index"
+            [post]=post
+            [index]="i"></app-post>
+
+          </div>
+          </div>
+
+
+        <div class="row">
+          <div class="mx-auto my-5">
+            <button class="btn"(click)="seeMore()"*ngIf="nextExist">see more <i class="fa fa-angle-double-down"></i></button>
+            <!-- <button class=" btn previous round"(click)="onPrevious()" [disabled]='!prevExist'>&#8249;</button> -->
+            <!-- <button class="btn next round" (click)="onNext()"[disabled]='!nextExist'>&#8250;</button> -->
+          </div>
+        </div>
+      </div>
+
+</div>
+
+</body>

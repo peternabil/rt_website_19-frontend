@@ -1,0 +1,143 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 3px 7px -1px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1.6%;
+  margin-top: 2.6%;
+  background: #fff;
+  line-height: 1.4;
+  border-radius: 5px;
+  overflow: hidden;
+  z-index: 0;
+  height: 50vh;
+  padding: 0 2rem;
+  position: relative;
+}
+.w-100{
+  min-width: 400px;
+  max-width: 600px;
+  max-height: 600px;
+}
+.container.meta {
+  position: relative;
+  z-index: 0;
+  height: 200px;
+}
+
+.container.photo {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-size: cover;
+  background-position: center;
+}
+
+.container .description {
+  padding: 1rem;
+  background: #fff;
+  position: relative;
+  z-index: 1;
+  margin: 0 auto;
+  align-items: center;
+}
+
+.container.description .inner-description {
+  display: inline-block;
+}
+
+.container .description h2 {
+  font-weight: 300;
+  color: black;
+  margin-top: 5px;
+}
+
+.container.description .read-more {
+  text-align: right;
+}
+
+.container .description .read-more a {
+  display: inline-block;
+  position: relative;
+}
+
+.container p {
+  position: relative;
+  margin: 1rem 0 0;
+}
+
+.container p:first-of-type {
+  margin-top: 1.25rem;
+}
+
+.container p:first-of-type:before {
+  content: "";
+  position: absolute;
+  height: 5px;
+  background: red;
+  width: 35px;
+  top: -0.75rem;
+  border-radius: 3px;
+}
+
+@media (min-width: 640px) {
+  .container {
+    flex-direction: row;
+    max-width: 100vw;
+    width: 100%;
+    height:100%
+  }
+
+  .blog-card .meta {
+    /* flex-basis: 40%; */
+    height: auto;
+  }
+
+  .blog-card .description {
+    /* flex-basis: 60%; */
+  }
+  .container.meta {
+    flex-basis: 40%;
+    height: auto;
+  }
+
+  .container .description {
+    flex-basis: 60%;
+  }
+  .container .description.counter {
+
+    flex-basis: 60%;
+  }
+
+
+  .container.alt {
+    flex-direction: row-reverse;
+  }
+}
+
+/* // Small devices (landscape phones, 576px and up) */
+@media (max-width: 767px) {
+  .container .description {
+    padding: 1rem;
+    background: #fff;
+    position: absolute;
+    width: 90vw;
+    z-index: 1;
+    margin: 0 auto;
+    align-items: center;
+    bottom: 0;
+  }
+}
+
+/* // Medium devices (tablets, 768px and up) */
+@media (min-width: 768px){
+  img {
+    height: 100%;
+}
+
+
+.time-to span {
+  font-size: 1.5rem;
+}
+}

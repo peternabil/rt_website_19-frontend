@@ -1,0 +1,189 @@
+
+
+<br>
+<br>
+<br>
+<h1 style="text-align:center" *ngIf="team != null"> {{team.name}} </h1>
+<hr>
+
+
+
+<!-- <div class="modal fade bd-example-modal-lg " id="exampleModal" tabindex="-4" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" *ngIf="team != null">
+        <div class="modal-dialog modal-lg  " role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="exampleModalLabel">{{team.name}}</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+                </div>
+                <div class="modal-body ">
+                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="height:auto">
+                        <ol class="carousel-indicators">
+                            <li data-target="#carouselExampleIndicators4" [ngClass]="number==1?'active':''" *ngFor="let number of [1,2,3,4,5,6,7,8,9,10]" data-slide-to="number"></li>
+                        </ol>
+                        <div class="carousel-inner">
+
+                            <div class="carousel-item "  *ngFor="let img of team.image">
+                                <img src="http://127.0.0.1:8000{{img.image}}" class="img-fluid test">
+                            </div>
+
+                        </div>
+                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div> -->
+
+
+
+
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Gallery</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <ngb-carousel *ngIf="team.image">
+      <ng-template ngbSlide *ngFor="let img of team.image">
+        <img class="gal" src="{{ endpoint + img.image}}" alt="Random third slide">
+      </ng-template>
+    </ngb-carousel>
+  </div>
+
+</ng-template>
+
+
+
+
+
+
+
+
+
+<br>
+<br>
+<div class="col-md-12 lib-item" data-category="view" *ngIf="team != null">
+    <div class="lib-panel">
+        <div class="row box-shadow">
+            <div class="col-md-6" [ngsReveal]="{ reset: true}">
+                <img class="gal" src="{{ endpoint + team.image[team.image.length-1].image}}">
+            </div>
+            <div class="col-md-6" [ngsReveal]="{ reset: true}">
+                <div class="lib-row lib-header">
+                    {{team.description}}
+                    <div class="lib-header-seperator"></div>
+                </div>
+                <br>
+                <div class="lib-row lib-header">
+                <button style="align-self: left;" class="btn btn-outline-danger mb-2 mr-2" (click)="openXl(content)">View Gallery</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
+<br>
+<!-- <div class="row centered" *ngIf="team != null">
+  <div
+  class="col-sm-6 col-lg-4 col-xs-12 centered"*ngFor="let achivement of achivements">
+      <div [ngsReveal]="{ reset: true}"
+      class="card text-white bg-dark mb-2 centered" style="width: 16rem;" >
+        <img class="card-img-top" src="http://127.0.0.1:8000{{achivement.image}}" alt="Card image cap">
+        <div [ngsReveal]="{ reset: true}" class="card-header">
+          <h2>{{achivement.title}}</h2>
+        </div>
+        <div [ngsReveal]="{ reset: true}" class="card-body">
+          <span style="padding-right: 25px;font-size:50px;">{{achivement.position}}</span>
+          <span _ngcontent-c5="" class="card-extra ">th</span>
+          <p class="card-text">{{achivement.description}}</p>
+          <p class="card-text">{{achivement.year}}</p>
+        </div>
+      </div>
+  </div>
+</div> -->
+
+
+<div class="main" *ngIf="team != null">
+  <ul class="cards">
+    <li class="cards_item centered" *ngFor="let achivement of achivements">
+      <div class="card" [ngsReveal]="{ reset: true}">
+        <div class="card_image"><img src="{{ endpoint + achivement.image}}" *ngIf="achivement != null"></div>
+        <div class="card_content" *ngIf="team != null">
+          <h2 class="card_title" *ngIf="team != null">{{achivement.title | uppercase}}</h2>
+          <span *ngIf="achivement != null" style="padding-right: 25px;font-size:50px;">{{achivement.position}}</span>
+          <span _ngcontent-c5="" class="card-extra ">th</span>
+          <p class="card_text" *ngIf="achivement != null">{{achivement.description}}</p>
+          <p class="card_text" *ngIf="achivement != null">{{achivement.year}}</p>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
+
+
+
+
+<br>
+<br>
+<br>
+<br>
+
+
+
+
+
+
+
+<!-- <html>
+  <head>
+    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.min.js"></script>
+    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.indigo-pink.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  </head>
+  <body>
+    <div class="mdl-card mdl-shadow--2dp demo-card-wide">
+      <img class="big-image" src = "{{team.image[0][image]}}">
+      <div class="mdl-card__title">
+        <h2 class="mdl-card__title-text">{{team.name}}</h2>
+      </div>
+      <div class="mdl-card__supporting-text">
+        <h2 class="mdl-card__supporting-text">{{team.description}}</h2>
+      </div>
+      <div class="mdl-card__actions mdl-card--border">
+      </div>
+      <div class="mdl-card__menu">
+
+      </div>
+    </div>
+    <h1 style="text-align:center">Achivements</h1>
+    <div class="main">
+      <ul class="cards">
+        <li class="cards_item" *ngFor="let an_achivement of achivements">
+          <div class="card">
+            <div class="card_image"><img src="{{an_achivement.image}}"></div>
+            <div class="card_content">
+              <h2 class="card_title">{{an_achivement.title}}</h2>
+              <p class="card_text">{{an_achivement.description}}</p>
+              <h2>{{an_achivement.position}}</h2>
+              <h2>{{an_achivement.year}}</h2>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html> -->

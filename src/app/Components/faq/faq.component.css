@@ -1,0 +1,130 @@
+.header, .header p {
+    position: relative;
+}
+
+.header .container {
+    padding: 68px 15px 72px !important;
+}
+
+
+
+.background {
+    background:url(background.jpg);
+    background-size: cover;
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    width: 100%;
+    z-index: -10;
+    margin: 0px;
+    padding: 0px;
+    -webkit-filter: blur(2px);
+  
+}
+.header h1 {
+    margin-bottom: 40px;
+    line-height: 80px;
+    color: #fff;
+    font-weight: 100 !important;
+    text-align: center;
+    margin-right: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 55px;
+    margin-bottom: 20px;
+}
+
+
+  
+ 
+  .container{
+    
+    
+    padding-left: 50px;
+    padding-top: 30px;
+    padding-right: 50px;
+   
+   
+    
+  }
+  
+  details{
+    font-family: 'Raleway', sans-serif;
+    
+  }
+  
+  summary {
+      transition: background .75s ease;
+      width: 100%;
+      outline: 0;
+      padding-top: 20px;
+    
+      font-size: 85%;
+      display: flex;
+      
+      justify-content: space-between;
+      cursor: pointer;
+      border-top: 1px solid #D3D3D3;
+  }
+  
+  h2 {
+      color: darkred;
+        
+      margin-bottom: 15px;
+      padding: 10px;
+      text-shadow: none;
+  }
+  
+  details p {
+      padding: 15px 25px 15px 25px;
+      margin: 0;
+      text-shadow: none;
+      text-align: justify;
+       font-size: 18px;
+    color: black;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+  }
+   details li {
+    color:black;
+    font-size: 17px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin-left: 30px;
+
+  }
+  details li a {
+    color:darkred;
+    text-decoration: none;
+    font-family: cursive; 
+     font-size: 17px;
+    
+
+  }
+  
+  
+  summary::after {
+      font-family: "Font Awesome 5 Free";
+      font-weight: 900;
+      content: "\f107";
+      display: inline-block;
+      padding-right: 15px;
+      font-size: 180%;
+      color: #034171;
+  }
+  details[open] summary::after {
+      content: '\f106';
+      display: inline-block;
+      padding-right: 15px;
+      font-size: 180%;
+  }
+  
+  details[open] summary:hover {
+    background:none;
+  }
+  summary:hover {
+      background: #d3d3d3;
+  }
+  
+  details summary::-webkit-details-marker {
+    display:none;
+  }
+  
